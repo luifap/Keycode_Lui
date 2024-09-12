@@ -1,37 +1,33 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-
-const AddTask = ({setlist}) => {
-
-    
+const AddTask = ({ listTask, setlistTask }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const [title, descript] = e.target
+        const title = e.target[0].value; // Obtén el valor del input
+        const description = e.target[1].value; // Obtén el valor del textarea
 
-        setlist(prevList => [...prevList, { title, descript }]);
-        console.log(list)
-    }
-
+        setlistTask([...listTask, { title, description }]);
+    };
 
     return (
-        <section onSubmit={handleSubmit}>
-            <h1>Add Task</h1>
-            <form>
-                <input type="text" />
-                <textarea></textarea>
-                <button type='submit'>Add</button>
+        <section>
+            <h1>Add a task</h1>
+
+            <form onSubmit={handleSubmit}>
+                <input type="text"  placeholder="Tittle" />
+                <textarea placeholder="Description"></textarea>
+
+                <button type="submit">Add</button>
             </form>
-            
         </section>
     );
 };
 
-
 AddTask.propTypes = {
-    setlist: PropTypes.func.isRequired,
+    listTask: PropTypes.array.isRequired,
+    setlistTask: PropTypes.func.isRequired,
 };
-
 
 export default AddTask;

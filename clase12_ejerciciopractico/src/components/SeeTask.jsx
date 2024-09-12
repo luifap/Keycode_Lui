@@ -1,29 +1,24 @@
 import PropTypes from 'prop-types';
 
+const SeeTask = ({ listTask }) => {
+    const elements = listTask.map((item, index) => (
+        <li key={index}>
+            <h2>{item.title || "Sin título"}</h2>
+            <p>{item.description || "Sin descripción"}</p>
+        </li>
+    ));
 
-const SeeTask = ( {list} ) => {
     return (
         <div>
-            <h1>List Task</h1>
-            <article>
-               { list.map ((item, index) => {
-                return (
-                    <div key={index}>
-                        <h2>{item.title}</h2>
-                        <p>{item.descript}</p>
-                    </div>
-                )
-               })}
-            </article>
-            
+            <h1>Task list</h1>
+
+            <ul>{elements}</ul>
         </div>
     );
 };
 
-
 SeeTask.propTypes = {
-    list: PropTypes.array.isRequired,
+    listTask: PropTypes.array.isRequired,
 };
-
 
 export default SeeTask;
