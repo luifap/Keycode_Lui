@@ -1,30 +1,24 @@
-import { useState } from 'react';
-import AddTask from '../components/AddTask';
-import Header from '../components/Header/Header';
-import SeeTask from '../components/SeeTask';
-
+import { useState } from "react";
+import AddTask from "../components/AddTask";
+import Header from "../components/Header/Header";
+import SeeTask from "../components/SeeTask";
 
 function Lui() {
+  const [showCmponent, setShowComponent] = useState(true);
 
-  const [showCmponent, setShowComponent]= useState(true);
+  const [listTask, setlistTask] = useState([]);
 
-  const [list, setlist]= useState( [] );
+  return (
+    <>
+      <Header setShowComponent={setShowComponent} />
 
-      return (
-        <>
-          <Header setShowComponent = {setShowComponent} />
-
-          {
-            showCmponent ? 
-            <AddTask list = {list} setlist = {setlist} /> :
-            <SeeTask list= {list} />
-          }
-          
-          
-        </>
-
-      )
-  
+      {showCmponent ? (
+        <AddTask listTask={listTask} setlistTask={setlistTask} />
+      ) : (
+        <SeeTask listTask={listTask} />
+      )}
+    </>
+  );
 }
 
-export default Lui
+export default Lui;
