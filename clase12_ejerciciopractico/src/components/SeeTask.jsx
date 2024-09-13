@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const SeeTask = ({ listTask }) => {
     const elements = listTask.map((item, index) => (
-        <li key={index}>
+        <li id='description' key={index}>
             <h2>{item.title || "Sin título"}</h2>
             <p>{item.description || "Sin descripción"}</p>
         </li>
