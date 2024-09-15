@@ -1,37 +1,73 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 function App() {
-  const [odontologo,  setOdontologo] = useState({nombre: null, apellido: null, matricula: null })
+    const [odontologo, setOdontologo] = useState({ nombre: null, apellido: null, matricula: null });
+    // Estados para el imput de nombre
+    const [name, setName] = useState("");
+    const [nameClass, setNameClass] = useState("");
 
-  const [name, setName] = useState("")
-  const [lastname, setLastname] = useState("")
-  const [code, setCode] = useState("")
+    // Estados para el imput de apellido
+    const [lastName, setLastName] = useState("");
+    const [lastNameClass, setLastNameClass] = useState("");
 
-  //* Funciones de validación de input
+    // Estados para el imput de matricula
+    const [code, setCode] = useState("");
+    const [codeClass, setCodeClass] = useState("");
 
-  //validar apellido
+    // * Funciones de validación de input
+    // Validar nombre
+    const handlerName = (event) => {
+        const name = event.target.value;
+        const regex = /^[a-zA-Z\s]*$/; // ¿Cómo podemos agregar tildes en la expresión regular?
 
-  const handlerName = (event) => {
-    const name = event.target.value;
-    const regex = /
-  }
+        if (regex.test(name)) {
+            console.log("Nombre válido");
+            setName(name);
+            setNameClass("valid");
+        } else {
+            setNameClass("invalid");
+            console.log("Nombre inválido");
+        }
+    };
 
-  const handlerLastName = (e) => {}
+    // Validar apellido
+    const handlerLastName = (e) => {};
 
-  const handlerCode= (e) => {}
-  return (
-    <>
-     <h1>Formulario</h1>
+    // Validar matricula
+    const handlerCode = (e) => {};
 
-     <form>
-        <input onChange={handlerName} type="text" name='name' autoComplete='firstname' required/>
-        <input onChange={handlerLastName} type="text" name='lastname' autoComplete='lastname' required/>
-        <input onChange={handlerCode} type="text" name='code' required/>
+    //* Validar formulario
+    const handlerSubmit = (e) => {};
 
-        <button type='submit'>Enviar</button>
-     </form>
-    </>
-  )
+    return (
+        <>
+            <h1>Formularios</h1>
+
+            <form onSubmit={handlerSubmit}>
+                <input
+                    className={nameClass}
+                    onChange={handlerName}
+                    type="text"
+                    name="name"
+                    autoComplete="firstname"
+                    required
+                />
+
+                <input
+                    className={lastNameClass}
+                    onChange={handlerLastName}
+                    type="text"
+                    name="lastname"
+                    autoComplete="lastname"
+                    required
+                />
+
+                <input className={codeClass} onChange={handlerCode} type="text" name="code" required />
+
+                <button type="submit">Enviar</button>
+            </form>
+        </>
+    );
 }
 
-export default App
+export default App;
