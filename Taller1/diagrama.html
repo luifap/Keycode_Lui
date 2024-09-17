@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Flujo</title>
+    <script>
+        function runProcess() {
+            let continueProcess = true;
+
+            while (continueProcess) {
+                alert("Inicio del proceso de ensamblaje");
+
+                alert("Verificar y organizar componentes electrónicos y materiales de embalaje");
+
+                alert("Montar la placa base en la carcasa y conectar la batería y cables");
+
+                alert("Colocar pantalla, cámara y botones");
+
+                alert("Realizar pruebas funcionales y verificar calidad");
+
+                let qualityPass = confirm("¿El dispositivo pasa las pruebas de calidad?");
+
+                if (qualityPass) {
+                    alert("Colocar el dispositivo en la caja con protectores y documentación");
+                    alert("Inspeccionar embalaje y preparar para envío");
+                    alert("Fin del proceso de ensamblaje");
+                    continueProcess = false; // Termina el proceso
+                } else {
+                    alert("Volver a Ensamblaje Inicial para ajustes o corrección");
+                    // El proceso se repite hasta que se apruebe la calidad
+                }
+            }
+        }
+
+        window.onload = function() {
+            runProcess();
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Diagrama de Flujo</h1>
+</body>
+
+</html>
