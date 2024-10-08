@@ -1,23 +1,22 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetails from './components/ProductDetails';
 import Navbar from './components/Navbar';
 
-const App = () => {
-    return (
-        <Router>
-            <Navbar />
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/products" component={Products} />
-                <Route path="/products" component={ProductDetails} />
-                <Route path="*" render={() => <h2>Página no encontrada</h2>} />
-            </Switch>
-        </Router>
-    );
-};
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products?id=:id" element={<ProductDetails />} />
+        <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
+      </Routes>
+    </Router>
+  );
+}
 
 export default App;
